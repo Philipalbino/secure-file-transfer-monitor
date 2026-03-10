@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>AI Email Phishing Detector</title>
+
+<style>
+body{
+background:#111;
+color:white;
+font-family:Arial;
+}
+
+textarea{
+width:80%;
+height:200px;
+}
+
+button{
+padding:10px;
+}
+
+.result{
+background:#222;
+padding:15px;
+margin-top:20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>AI Phishing Detector</h1>
+
+<form method="POST">
+
+<textarea name="email" placeholder="Paste email text here..."></textarea>
+<br>
+<button type="submit">Analyze</button>
+
+</form>
+
+{% if result %}
+
+<div class="result">
+
+<h2>AI Verdict: {{result}}</h2>
+
+</div>
+
+{% endif %}
+
+</body>
+
+</html>

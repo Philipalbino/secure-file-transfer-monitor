@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>URL Phishing Scanner</title>
+
+<style>
+
+body{
+background:#111;
+color:white;
+font-family:Arial;
+}
+
+input{
+width:60%;
+padding:10px;
+}
+
+button{
+padding:10px;
+}
+
+.result{
+margin-top:20px;
+background:#222;
+padding:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>URL Phishing Scanner</h1>
+
+<form method="POST">
+
+<input name="url" placeholder="Paste suspicious URL here">
+
+<button type="submit">Scan URL</button>
+
+</form>
+
+{% if result %}
+
+<div class="result">
+
+<h2>Verdict: {{result}}</h2>
+<p>Risk Score: {{score}}</p>
+
+<ul>
+
+{% for item in findings %}
+<li>{{item}}</li>
+{% endfor %}
+
+</ul>
+
+</div>
+
+{% endif %}
+
+</body>
+
+</html>

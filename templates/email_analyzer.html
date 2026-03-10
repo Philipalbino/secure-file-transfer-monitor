@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Email Threat Analyzer</title>
+
+<style>
+
+body{
+background:#111;
+color:white;
+font-family:Arial;
+}
+
+textarea{
+width:80%;
+height:200px;
+}
+
+button{
+padding:10px;
+margin-top:10px;
+}
+
+.result{
+margin-top:20px;
+background:#222;
+padding:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Email Security Analyzer</h1>
+
+<form method="POST">
+
+<textarea name="email" placeholder="Paste email content here..."></textarea>
+
+<br>
+
+<button type="submit">Analyze Email</button>
+
+</form>
+
+{% if result %}
+
+<div class="result">
+
+<h2>Result: {{result}}</h2>
+<p>Risk Score: {{score}}</p>
+
+<ul>
+
+{% for item in findings %}
+
+<li>{{item}}</li>
+
+{% endfor %}
+
+</ul>
+
+</div>
+
+{% endif %}
+
+</body>
+
+</html>

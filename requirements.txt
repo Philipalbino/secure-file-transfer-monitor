@@ -2,3 +2,5 @@ flask
 watchdog
 requests
 gunicorn
+scikit-learn
+pandas
