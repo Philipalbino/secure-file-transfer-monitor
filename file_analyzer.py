@@ -1,13 +1,9 @@
-import socket
 import os
-from virustotal_scan import get_file_hash, scan_hash
+import socket
 from logger import log_event
+from alert_system import send_alert
+
 def analyze_file(filepath):
-
-hostname = socket.gethostname()
-ip_address = socket.gethostbyname(hostname)
-
-log_event(f"Source system: {hostname} ({ip_address})")
 
     filename = os.path.basename(filepath)
 
@@ -15,6 +11,7 @@ log_event(f"Source system: {hostname} ({ip_address})")
 
     log_event(f"File detected: {filename}")
 
+    # Detect suspicious extensions
     suspicious_extensions = [".exe", ".bat", ".js", ".vbs"]
 
     for ext in suspicious_extensions:
@@ -24,10 +21,10 @@ log_event(f"Source system: {hostname} ({ip_address})")
 
             log_event(f"ALERT: Suspicious file detected {filename}")
 
-    # SHA256 hash
-    file_hash = get_file_hash(filepath)
+            send_alert(f"Suspicious file detected: {filename}")
 
-    print("SHA256:", file_hash)
+    # Get system info
+    hostname = socket.gethostname()
+    ip_address = socket.gethostbyname(hostname)
 
-    # VirusTotal scan
-    scan_hash(file_hash)
+    log_event(f"Source system: {hostname} ({ip_address})")
