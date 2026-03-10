@@ -1,0 +1,12 @@
+2026-03-10 08:22:23.936605 - New file uploaded: test3.txt
+2026-03-10 08:22:23.937234 - File detected: test3.txt
+2026-03-10 08:24:32.352108 - New file uploaded: test4.txt
+2026-03-10 08:24:32.352186 - File detected: test4.txt
+2026-03-10 08:25:11.951238 - New file uploaded: malware.exe
+2026-03-10 08:25:11.951311 - File detected: malware.exe
+2026-03-10 08:25:11.951360 - ALERT: Suspicious file detected malware.exe
+2026-03-10 11:09:25.270183 - New file uploaded: hacker.exe
+2026-03-10 11:09:25.271446 - File detected: hacker.exe
+2026-03-10 11:09:25.271654 - ALERT: Suspicious file detected hacker.exe
+2026-03-10 11:28:31.675104 - New file uploaded: test6.txt
+2026-03-10 11:28:31.675973 - File detected: test6.txt

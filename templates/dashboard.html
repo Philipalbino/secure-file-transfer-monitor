@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Security Monitoring Dashboard</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+body{
+background:#111;
+color:white;
+font-family:Arial;
+}
+
+h1{
+color:#00ffcc;
+}
+
+.stats{
+display:flex;
+gap:20px;
+margin-bottom:20px;
+}
+
+.card{
+background:#222;
+padding:15px;
+border-radius:5px;
+width:150px;
+text-align:center;
+}
+
+.log{
+background:#222;
+padding:10px;
+margin:5px;
+}
+
+canvas{
+background:#222;
+padding:20px;
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Secure File Transfer Monitoring Dashboard</h1>
+
+<div class="stats">
+
+<div class="card">
+<h3>Total Uploads</h3>
+<p>{{uploads}}</p>
+</div>
+
+<div class="card">
+<h3>Security Alerts</h3>
+<p>{{alerts}}</p>
+</div>
+
+<div class="card">
+<h3>Malware Files</h3>
+<p>{{malware}}</p>
+</div>
+
+</div>
+
+<h2>Security Activity Chart</h2>
+
+<canvas id="securityChart" width="400" height="200"></canvas>
+
+<script>
+
+const ctx = document.getElementById('securityChart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Uploads', 'Alerts'],
+        datasets: [{
+            label: 'Security Events',
+            data: [{{uploads}}, {{alerts}}],
+            backgroundColor: [
+                'cyan',
+                'red'
+            ]
+        }]
+    },
+    options: {
+        plugins: {
+            legend: {
+                labels: {
+                    color: 'white'
+                }
+            }
+        },
+        scales: {
+            y: {
+                ticks: {
+                    color: 'white'
+                }
+            },
+            x: {
+                ticks: {
+                    color: 'white'
+                }
+            }
+        }
+    }
+});
+
+</script>
+
+<h2>Recent Activity</h2>
+
+{% for log in logs %}
+
+<div class="log">{{log}}</div>
+
+{% endfor %}
+
+</body>
+</html>
