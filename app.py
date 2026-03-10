@@ -1,8 +1,10 @@
+import os
 from flask import Flask, render_template
 from email_analyzer import analyze_email
 from flask import request
 from url_analyzer import analyze_url
 from ai_phishing_detector import predict_email
+from file_analyzer import analyze_file
 app = Flask(__name__)
 
 LOG_FILE = "logs/activity.log"
@@ -86,6 +88,25 @@ def ai_email():
         "ai_email.html",
         result=result
     )
+
+@app.route("/file-scan", methods=["GET", "POST"])
+def file_scan():
+
+    result = None
+
+    if request.method == "POST":
+
+        file = request.files["file"]
+
+        filepath = os.path.join("uploads", file.filename)
+
+        file.save(filepath)
+
+        analyze_file(filepath)
+
+        result = "File uploaded and analyzed successfully"
+
+    return render_template("file_scan.html", result=result)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)

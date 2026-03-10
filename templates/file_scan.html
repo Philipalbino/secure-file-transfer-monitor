@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>File Malware Scanner</title>
+
+<style>
+
+body{
+background:#0b0f14;
+color:white;
+font-family:Arial;
+}
+
+.container{
+padding:20px;
+}
+
+button{
+padding:10px;
+margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>File Malware Scanner</h1>
+
+<form method="POST" enctype="multipart/form-data">
+
+<input type="file" name="file">
+
+<br>
+
+<button type="submit">Scan File</button>
+
+</form>
+
+{% if result %}
+
+<h3>{{result}}</h3>
+
+{% endif %}
+
+</div>
+
+</body>
+
+</html>
